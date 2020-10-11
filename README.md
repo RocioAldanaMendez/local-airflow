@@ -4,7 +4,7 @@ Airflow is an open source configuration-as-code job orchestration tool developed
 
 This is my own personal Airflow boilerplate used for reference. I usually run this locally in docker to test DAGs, etc. It has the following features:
 - Installs headless Chrome and chromedriver for use in Selenium webscraping (I do a lot of this).
-- Creates postgres backend (it's better).
+- Creates Postgres backend (it's better).
 - Everything Airflow is installed in /root/airflow.
 - Fernet key is created for connection encryption. Thanks puckel/docker-airflow for the syntax assist.
 - Installs awscli, sometimes needed for debugging in an AWS env.
@@ -17,8 +17,8 @@ For local debug, the following commands are very useful:
 ```bash
 docker build -t docker-airflow:local .
 docker run -it -p 8080:8080 -v :/root/airflow docker-airflow:local
-docker exec -it $(docker ps -q --filter ancestor=docker-airflow) /bin/bash
-docker stop $(docker ps -q --filter ancestor=docker-airflow)
+docker exec -it $(docker ps -q --filter ancestor=docker-airflow:local) /bin/bash
+docker stop $(docker ps -q --filter ancestor=docker-airflow:local)
 ```
 
 For K8s debug, the following commands are very useful.
