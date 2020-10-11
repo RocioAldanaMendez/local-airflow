@@ -1,0 +1,15 @@
+# adjust requirements.txt libraries as needed
+
+apache-airflow[postgres,crypto]==1.10.12
+awscli==1.18.147
+boto3==1.15.6
+cryptography
+flask_bcrypt
+numpy==1.16.2
+pandas==1.0.3
+psycopg2-binary==2.8.5
+pyyaml
+selenium==3.141.0
+webdriver-manager==2.3.0
+xlrd==1.2.0
+
