@@ -2,7 +2,7 @@
 
 Airflow is an open source configuration-as-code job orchestration tool developed by AirBnB and written in Python. For detailed info on the Airflow experience, please see the docs: https://airflow.apache.org/docs/stable/.
 
-This is my own personal Airflow boilerplate used for reference. I usually run this locally in docker to test DAGs, etc. It has the following features:
+This is my own personal Airflow boilerplate. I usually run a version of this locally in docker to test DAGs, etc. It has the following features:
 - Installs headless Chrome and chromedriver for use in Selenium webscraping (I do a lot of this).
 - Creates Postgres backend (it's better).
 - Everything Airflow is installed in /root/airflow.
