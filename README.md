@@ -37,4 +37,9 @@ To stop the image, try below or ctrl+c in terminal:
 docker stop $(docker ps -q --filter ancestor=ap-airflow-qa:local)
 ```
 
+To run the image as a local service with docker-compose:
+```bash
+docker-compose up
+```
+
 Visit http://localhost:8081/home while running for all your Airflow interface needs.

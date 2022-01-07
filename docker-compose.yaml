@@ -1,0 +1,15 @@
+services:
+  airflow:
+    image: ap-airflow-qa:local
+    ports:
+      - "8080:8080"
+    volumes:
+      - ~/airflow/dags:/root/airflow/dags
+      - ~/.aws:/root/.aws
+    restart: unless-stopped
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
