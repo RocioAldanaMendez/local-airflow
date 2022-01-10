@@ -12,7 +12,7 @@ Make sure to install docker from either the official site (https://docs.docker.c
 
 Make sure your local AWS credentials for the AWS Analytics account are set up correctly in ~/.aws. This image requires Analytics account credential to be your default credential.
 
-#### Option 1: docker build/run
+#### Docker build/run
 
 To build the image:
 ```bash
