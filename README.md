@@ -10,36 +10,39 @@ Make sure to install docker from either the official site (https://docs.docker.c
 
 #### AWS Credentials
 
-Make sure your AWS credentials for the AWS Analytics account are set up correctly in ~/.aws. This image assumes Analytics is your default credential.
+Make sure your local AWS credentials for the AWS Analytics account are set up correctly in ~/.aws. This image requires Analytics account credential to be your default credential.
 
-#### Building and Running
+#### Option 1: docker build/run
 
 To build the image:
 ```bash
 docker build -t ap-airflow-qa:latest .
 ```
 
-To run the image, set LOCAL_DAGS below to the local directory containing your DAGs.
+To run the image as a local service with docker-compose:
 ```bash
-LOCAL_DAGS=~/airflow/dags
-docker run -it -p 8081:8080 -v $LOCAL_DAGS:/root/airflow/dags \
-        -v ~/.aws:/root/.aws -v :/root/airflow -e qa=1 ap-airflow-qa:latest
+docker-compose up
 ```
-(Note here I forward to 8081 to avoid clashing with local background service run, but you can use any port you'd like.)
+This will cause the Airflow image to run as a local background service as long as Docker is active. 
+
+You can change the path used to load dags by adjusting the `volumes:` section of docker-compose.yaml.
+
+Visit http://localhost:8080/home while running for all your Airflow interface needs.
 
 To shell into the image for debug:
 ```bash
 docker exec -it $(docker ps -q --filter ancestor=ap-airflow-qa:latest) /bin/bash
 ```
 
-To stop the image, try below or ctrl+c in terminal:
+To stop the image, try below:
 ```bash
-docker stop $(docker ps -q --filter ancestor=ap-airflow-qa:local)
+docker stop $(docker ps -q --filter ancestor=ap-airflow-qa:latest)
 ```
+If this doesn't work, just list your containers and stop the image.
 
-To run the image as a local service with docker-compose:
+To run the image WITHOUT docker compose, set LOCAL_DAGS below to the local directory containing your DAGs and run:
 ```bash
-docker-compose up
+LOCAL_DAGS=~/airflow/dags
+docker run -it -p 8080:8080 -v $LOCAL_DAGS:/root/airflow/dags \
+        -v ~/.aws:/root/.aws -v :/root/airflow -e qa=1 ap-airflow-qa:latest
 ```
-
-Visit http://localhost:8081/home while running for all your Airflow interface needs.
