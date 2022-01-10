@@ -19,6 +19,18 @@ To build the image:
 docker build -t ap-airflow-qa:latest .
 ```
 
+In docker-compose.yaml, change the local volume dags reference to reference your own local dags repo if needed. 
+
+So:
+```bash
+      - ~/airflow/dags:/root/airflow/dags
+```
+
+Becomes:
+```bash
+      - ~/your/path/to/your/local/dags:/root/airflow/dags
+```
+
 To run the image as a local service with docker-compose:
 ```bash
 docker-compose up
