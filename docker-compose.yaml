@@ -1,6 +1,8 @@
 services:
   airflow:
     image: ap-airflow-qa:latest
+    environment:
+      - qa=1
     ports:
       - "8080:8080"
     volumes:
