@@ -1,8 +1,6 @@
-### AffiniPay Airflow QA Docker Image
+### Airflow QA Docker Image
 
 Airflow is an open source configuration-as-code job orchestration tool developed by AirBnB and written in Python. For detailed info on the Airflow experience, please see the docs: https://airflow.apache.org/docs/stable/.
-
-While we utilize Managed Workflows for Apache Airflow in production, this is our in-house image for DAG dev and testing. It will mimic the capabilities of MWAA for use locally.
 
 #### Docker
 
